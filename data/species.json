@@ -1,0 +1,145 @@
+[
+    {
+    "id": "sp001",
+    "name": "European Otter",
+    "image": "images/european-otter-ai.jpg",
+    "description": "Often seen near rocky shores or riverbanks. Shy but playful.",
+    "location": [51.87669341460627, -9.57477473434105],
+    "timeOfDay": ["dawn", "dusk"],
+    "season": ["spring", "summer"],
+    "rarity": "rare",
+    "type": "mammal"
+  },
+  {
+    "id": "sp002",
+    "name": "Common Periwinkle",
+    "image": "images/whelk-ai.jpg",
+    "description": "Tiny sea snail, common on rocky shores.",
+    "location": [51.87769539264108, -9.570478292045308],
+    "timeOfDay": ["any"],
+    "season": ["any"],
+    "rarity": "common",
+    "type": "invertebrate"
+  },
+  {
+      "id": "sp003",
+      "name": "Acorn Barnacle",
+      "image": "images/acorn-barnacle-ai.jpg",
+      "description": "Sticks to rocks like a stubborn limpet and filters food with feathery legs.",
+      "location": [51.87679369564593, -9.573535882343334],
+      "timeOfDay": ["any"],
+      "season": ["any"],
+      "rarity": "common",
+      "type": "invertebrate"
+  },
+    {
+      "id": "sp004",
+      "name": "Grey Heron",
+      "image": "images/european-heron-ai.jpg",
+      "description": "Tall, statuesque bird often found staring suspiciously into water.",
+      "location": [51.875631537975025, -9.578631033290621],
+      "timeOfDay": ["dawn", "day", "dusk"],
+      "season": ["any"],
+      "rarity": "uncommon",
+      "type": "bird"
+    },
+    {
+      "id": "sp005",
+      "name": "Oystercatcher",
+      "image": "images/oystercatcher-ai.jpg",
+      "description": "Loud black-and-white wader with a carrot-coloured bill and no indoor voice.",
+      "location": [51.875917616790005, -9.577531477652853],
+      "timeOfDay": ["day", "dusk"],
+      "season": ["spring", "summer", "autumn"],
+      "rarity": "common",
+      "type": "bird"
+    },
+    {
+      "id": "sp006",
+      "name": "Pipistrelle Bat",
+      "image": "images/common-pipistrelle-bat-ai.jpg",
+      "description": "Tiny bat, likes insects, hates mornings. Ireland’s most common bat species.",
+      "location": [51.87684419802446, -9.574328090137705],
+      "timeOfDay": ["dusk", "night"],
+      "season": ["summer", "autumn"],
+      "rarity": "uncommon",
+      "type": "mammal"
+    },
+    {
+      "id": "sp007",
+      "name": "European Eel",
+      "image": "images/european-eel-ai.jpg",
+      "description": "Long-distance traveller with mysterious breeding habits. Likes mud.",
+      "location": [51.877723252517065, -9.574194976095697],
+      "timeOfDay": ["night"],
+      "season": ["autumn", "winter"],
+      "rarity": "rare",
+      "type": "fish"
+    },
+    {
+        "id": "sp008",
+        "name": "Grey Seal",
+        "image": "images/grey-seal-ai.jpg",
+        "description": "Large marine mammal often seen lounging on rocks or popping up to stare judgmentally at kayakers.",
+        "location": [51.87515631486956, -9.573747697282133],
+        "timeOfDay": ["dawn", "dusk"],
+        "season": ["autumn", "spring"],
+        "rarity": "uncommon",
+        "type": "mammal"
+      },
+      {
+        "id": "sp009",
+        "name": "Pygmy Shrew",
+        "image": "images/shrew-ai.jpg",
+        "description": "Tiny, frantic insect-eater. Rarely seen but always rustling something.",
+        "location": [51.877256830114185, -9.574058337768612],
+        "timeOfDay": ["dawn", "dusk"],
+        "season": ["spring", "summer", "autumn"],
+        "rarity": "rare",
+        "type": "mammal"
+      },
+      {
+        "id": "sp010",
+        "name": "Red Fox",
+        "image": "images/red-fox-ai.jpg",
+        "description": "Ireland’s only wild dog. Cunning, photogenic, slightly too confident near bins.",
+        "location": [51.876433136181404, -9.578454876881231],
+        "timeOfDay": ["dusk", "night"],
+        "season": ["any"],
+        "rarity": "uncommon",
+        "type": "mammal"
+      },
+      {
+        "id": "sp011",
+        "name": "Honeybee",
+        "image": "images/honey-bee-ai.jpg",
+        "description": "Busy pollinator with a sweet tooth and strong opinions on lavender.",
+        "location": [51.87739576495292, -9.57218558893271],
+        "timeOfDay": ["day"],
+        "season": ["spring", "summer"],
+        "rarity": "common",
+        "type": "insect"
+      },
+      {
+        "id": "sp012",
+        "name": "Seven-Spot Ladybird",
+        "image": "images/seven-spot-ladybird-ai.jpg",
+        "description": "Bright red beetle with black spots. Harmless to humans, devastating to aphids.",
+        "location": [51.877177438584994, -9.573624310141408],
+        "timeOfDay": ["day"],
+        "season": ["spring", "summer", "autumn"],
+        "rarity": "common",
+        "type": "insect"
+      },
+      {
+        "id": "sp013",
+        "name": "Rhododendron",
+        "image": "images/rhodo-ai.jpg",
+        "description": "Large flowering shrub with bright pink-purple blooms. Beautiful, but invasive and not shy about it.",
+        "location": [51.876820174968906, -9.576115950223514],
+        "timeOfDay": ["any"],
+        "season": ["spring", "summer"],
+        "rarity": "common",
+        "type": "plant"
+      }
+]
