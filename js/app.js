@@ -206,6 +206,33 @@ fetch('data/bioquest_data_full.json')
 
         card.appendChild(seasonContainer);
       }
+// === Fullscreen popup logic for cards ===
+const overlay = document.createElement('div');
+overlay.classList.add('card-overlay');
+document.body.appendChild(overlay);
+
+// Close button
+const closeBtn = document.createElement('button');
+closeBtn.classList.add('close-button', 'overlay-close');
+closeBtn.classList.add('close-button');
+closeBtn.innerHTML = '&times;';
+closeBtn.addEventListener('click', () => {
+  overlay.classList.remove('active');
+  overlay.innerHTML = ''; // Clear content
+});
+overlay.appendChild(closeBtn);
+
+// Add click listener to each card
+card.addEventListener('click', () => {
+  const cardClone = card.cloneNode(true);
+  cardClone.style.marginTop = '50px';
+  cardClone.style.maxWidth = '600px';
+  cardClone.style.marginLeft = 'auto';
+  cardClone.style.marginRight = 'auto';
+  overlay.appendChild(cardClone);
+  overlay.classList.add('active');
+});
+
 
       sectionGrid.appendChild(card);
       console.log("Card created for:", species.name);
