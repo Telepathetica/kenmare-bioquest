@@ -215,6 +215,7 @@ fetch('data/bioquest_data_full.json')
     });
 //start filter buttons bar
     const filterBar = document.createElement('div');
+    filterBar.classList.add('filter-bar');
     filterBar.style.position = 'sticky';
     filterBar.style.top = '0';
     filterBar.style.zIndex = '999';
@@ -254,6 +255,7 @@ fetch('data/bioquest_data_full.json')
 //end filter buttons bar
     // Start Checkbox filters
     const filterWrapper = document.createElement('div');
+    filterWrapper.classList.add('filter-wrapper');
     filterWrapper.style.margin = '20px auto';
     filterWrapper.style.textAlign = 'center';
     filterWrapper.style.display = 'flex';
@@ -442,6 +444,27 @@ fetch('data/bioquest_data_full.json')
 
           map.setView(userCoords, 17);
 
+          // === Floating map recentering buttons ===
+          document.getElementById('resetMapBtn').addEventListener('click', () => {
+            map.setView([51.87678061471379, -9.575524117425353], 17); // default view
+          });
+          
+          document.getElementById('locateMeBtn').addEventListener('click', () => {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(
+                position => {
+                  const userCoords = [position.coords.latitude, position.coords.longitude];
+                  map.setView(userCoords, 17);
+                },
+                error => {
+                  alert("Unable to retrieve your location.");
+                }
+              );
+            } else {
+              alert("Geolocation is not supported on this device.");
+            }
+          });
+
           // === Toast logic for nearby species ===
           const nearbySpecies = species.filter(sp => {
             const [lat, lng] = Array.isArray(sp.location) ? sp.location : sp.location.split(',').map(Number);
@@ -479,19 +502,20 @@ fetch('data/bioquest_data_full.json')
         },
         error => {
           console.warn("Geolocation error:", error.message);
-          const geoWarning = document.createElement('p');
-          geoWarning.textContent = "📍 We couldn't determine your location accurately. Try checking your browser's location settings or connect using a mobile device.";
-          geoWarning.style.textAlign = 'center';
-          geoWarning.style.marginTop = '20px';
-          geoWarning.style.padding = '10px';
-          geoWarning.style.backgroundColor = '#fff3cd';
-          geoWarning.style.border = '1px solid #ffeeba';
-          geoWarning.style.color = '#856404';
-          geoWarning.style.borderRadius = '5px';
-          geoWarning.style.maxWidth = '600px';
-          geoWarning.style.marginLeft = 'auto';
-          geoWarning.style.marginRight = 'auto';
+          const geoWarning = document.createElement('div');
+          geoWarning.classList.add('geo-warning');
+          geoWarning.innerHTML = `
+            📍 We couldn't determine your location accurately.<br>
+            Try checking your browser's location settings or connect using a mobile device.
+            <button class="close-button" aria-label="Close warning">&times;</button>
+          `;
+          
+          geoWarning.querySelector('.close-button').addEventListener('click', () => {
+            geoWarning.remove();
+          });
+          
           document.body.insertBefore(geoWarning, document.getElementById('map'));
+          
         }
       );
     } else {

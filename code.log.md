@@ -63,7 +63,7 @@ Use it to track work, assist future maintainers, and avoid repeating mistakes.
 
 ---
 
-### ✅ 2025-05-06 – Species Icon Styling and Zoom Controls
+### ✅ 2025-05-05 – Species Icon Styling and Zoom Controls
 
 - Adjusted species marker sizes dynamically in JavaScript based on screen size and species type
   - Larger icons on mobile (`40x40`, `32x32` for mammals)
@@ -77,3 +77,13 @@ Use it to track work, assist future maintainers, and avoid repeating mistakes.
 - Confirmed all visual changes display properly on mobile
 
 ---
+
+### ✅ 2025-05-05 – Species Icon Styling and Zoom Controls
+
+- Improved font sizing logic to better separate styles for `.card`, `h3`, `p`, and `span` elements
+- Ensured that heading and paragraph font sizes scale independently, especially on mobile
+- Increased badge/tag text size using `!important` and adjusted line height and padding
+- Made time and season badge containers horizontal with scroll fallback to keep them on one line where possible
+- Adjusted card padding and width to maximize use of available space while maintaining readability
+- Applied spacing tweaks above/below headings and around paragraphs to reduce visual clutter on mobile
+- Confirmed consistent alignment between map area and card width on mobile layout

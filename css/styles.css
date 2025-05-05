@@ -76,12 +76,17 @@ body.mobile-mode .leaflet-control-zoom a {
   line-height: 40px;
   font-size: 22px;
 }
-
+/*Hide filter bar and filter wrapper on mobile*/
+body.mobile-mode .filter-bar,
+body.mobile-mode .filter-wrapper,
+body.mobile-mode #match-counter {
+  display: none !important;
+}
   /* ============================================================
    TEMPORARY TESTS
    ============================================================ */
    body.mobile-mode {
-    background: hotpink !important;
+    background: rgb(74, 112, 3) !important;
   }
   /* Default card grid */
 .species-card-container {
@@ -95,3 +100,141 @@ body.mobile-mode .species-card-container {
   width: 95%;
   margin: 0 auto;
 }
+/*increase size of location not available message */
+.geo-warning {
+  font-size: 1.3em;
+  padding: 16px;
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  color: #856404;
+  border-radius: 6px;
+  max-width: 95%;
+  margin: 10px auto;
+  position: relative;
+}
+
+.geo-warning .close-button {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.9em;
+  color: #856404;
+  cursor: pointer;
+}
+/*Increase card font size and add padding*/
+/* Default (desktop) card styles */
+.card {
+  font-size: 1em;
+  line-height: 1.4;
+  padding: 12px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* Species name/title styling */
+.card h3 {
+  font-size: 1.2em;
+  margin: 4px 0;
+  word-wrap: break-word;
+}
+
+/* Species description/paragraph styling */
+.card p {
+  font-size: 1.4em;
+  line-height: 1.3;
+  margin: 4px 0;
+}
+
+/* Card inner divs spacing */
+.card div {
+  margin-bottom: 10px;
+}
+
+/* Shared badge/tag style for habitat, time, season, etc. */
+.card span {
+  font-size: 1em !important;
+  padding: 4px 6px;
+  line-height: 1.1; /* Tighten vertical spacing */
+  display: inline-block;
+  min-height: auto; /*Let height follow content*/
+  vertical-align: middle;
+}
+body.mobile-mode .card span {
+  font-size: 1.4em !important;
+  padding: 4px 6px;
+  line-height: 1.1;
+  min-height: auto;
+  vertical-align: middle;
+}
+/* Badge containers: keep on one line when possible, wrap if necessary */
+.card .time-container,
+.card .season-container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 5px;
+  overflow-x: auto;
+}
+.card .tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* Mobile-only enlarged card styles */
+body.mobile-mode .card {
+  font-size: 1.4em;
+  padding: 12px 8px;
+  max-width: none;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+body.mobile-mode .card h3 {
+  font-size: 1.7em;
+  margin: 4px 0;
+}
+
+body.mobile-mode .card p {
+  font-size: 1.3em;
+  line-height: 1.3;
+  margin: 4px 0;
+}
+
+body.mobile-mode .card div {
+  margin-bottom: 12px;
+}
+.floating-map-btn {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  font-size: 50px;
+  background-color: #ffffff;
+  color: rgb(5, 5, 5);
+  border: 2px solid black;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 10000;
+  cursor: pointer;
+  display: none; /* hidden by default */
+}
+
+/* Stagger second button */
+#resetMapBtn {
+  bottom: 190px;
+}
+
+body.mobile-mode .floating-map-btn {
+  display: block;
+}
+/*TEMPORARY TESTING
+.floating-map-btn {
+  background: hotpink;
+  border: 2px solid black;
+}*/
