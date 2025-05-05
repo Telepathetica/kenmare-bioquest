@@ -567,6 +567,9 @@ card.addEventListener('click', () => {
   alert("JS file loaded");
   document.addEventListener('DOMContentLoaded', () => {
     console.log("DOM is ready");
+    //temporary force mobile// 
+    document.body.classList.add('mobile-mode');
+    //end temporary force mobile//
     setTimeout(() => {
       map.invalidateSize();
     }, 200);

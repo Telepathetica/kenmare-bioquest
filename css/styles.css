@@ -109,7 +109,7 @@ body.mobile-mode #match-counter {
   /* ============================================================
    TEMPORARY TESTS
    ============================================================ */
-   body.mobile-mode {
+  body.mobile-mode {
     background: #c2ccd3 !important;
   }
   /* Default card grid */
