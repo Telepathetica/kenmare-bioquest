@@ -1,7 +1,13 @@
+/* ============================================================
+   1. Base layout and body styles
+   ============================================================ */
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
 }
+/* ============================================================
+   2. Rare species effects (glow)
+   ============================================================ */
 .highlight {
     outline: 3px solid #4FC3F7;
     background-color: #e6f7ff;
@@ -18,3 +24,45 @@ body {
       filter: drop-shadow(0 0 12px rgba(255, 0, 0, 1));
     }
   }
+  /*End Glowing rare species style*/
+  /* ============================================================
+   3. Mobile mode simulation (via toggle button)
+   ============================================================ */
+  body.mobile-mode #map {
+    height: 35vh !important;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  body.mobile-mode .species-card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 95%;
+    margin: 0 auto;
+  }
+  
+  body.mobile-mode .card img {
+    max-width: 100%;
+    height: auto;
+  }
+  /*simulated mobile end*/
+  /* ============================================================
+   TEMPORARY TESTS
+   ============================================================ */
+   body.mobile-mode {
+    background: hotpink !important;
+  }
+  /* Default card grid */
+.species-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+/* Mobile mode card layout */
+body.mobile-mode .species-card-container {
+  grid-template-columns: repeat(2, 1fr);
+  width: 95%;
+  margin: 0 auto;
+}

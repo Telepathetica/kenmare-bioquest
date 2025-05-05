@@ -1,10 +1,28 @@
+/* ============================================================
+   Kenmare BioQuest – App Script
+   Author: [Maria]
+   Description:
+     Core JavaScript logic for Kenmare BioQuest, including:
+     - Map initialization and user location
+     - Species marker loading and popups
+     - Dynamic card creation and filtering
+     - Nearby species toast logic
+     - Mobile layout toggle via floating button
+
+   Sections:
+     1. Initial setup and map configuration
+     2. Fetch and render species data
+     3. Filtering logic (buttons and checkboxes)
+     4. Mobile toggle interaction
+     5. User location and toast feedback
+   ============================================================ */
 
 console.log("Kenmare BioQuest app loaded.");
 
 let modal;
 let modalContent;
 
-// Map setup
+// Start Map setup
 const map = L.map('map').setView([51.87678061471379, -9.575524117425353], 17);
 document.getElementById('map').style.position = 'sticky';
 document.getElementById('map').style.top = '50px';
@@ -13,8 +31,10 @@ document.getElementById('map').style.zIndex = '100';
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
+//End Map Set up
 
-// Fetch block
+// Fetch content block
+//Start species data load
 fetch('data/bioquest_data_full.json')
   .then(response => response.json())
   .then(data => {
@@ -23,8 +43,8 @@ fetch('data/bioquest_data_full.json')
     const habitats = data.habitats;
 
     console.log("Species data loaded:", species);
-
-
+// End species data load
+//Start card container load
     let currentType = null;
     const mainContainer = document.createElement('div');
     mainContainer.style.display = 'flex';
@@ -33,7 +53,8 @@ fetch('data/bioquest_data_full.json')
     mainContainer.style.marginTop = '30px';
 
     let sectionGrid = null;
-
+//End card container load
+//start populating card info
     species.forEach(species => {
       console.log("Creating marker for:", species.name, species.location);
       if (species.type !== currentType) {
@@ -47,7 +68,7 @@ fetch('data/bioquest_data_full.json')
 
         sectionGrid = document.createElement('div');
         sectionGrid.style.display = 'grid';
-        sectionGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(200px, 1fr))';
+        sectionGrid.classList.add('species-card-container');
         sectionGrid.style.gap = '20px';
         typeSection.appendChild(sectionGrid);
 
@@ -183,9 +204,10 @@ fetch('data/bioquest_data_full.json')
       sectionGrid.appendChild(card);
       console.log("Card created for:", species.name);
 
+//End loading card content
       // Modal popup disabled: code removed for cleanup.
     });
-
+//start filter buttons bar
     const filterBar = document.createElement('div');
     filterBar.style.position = 'sticky';
     filterBar.style.top = '0';
@@ -223,8 +245,8 @@ fetch('data/bioquest_data_full.json')
       button.onclick = () => scrollToType(type);
       filterBar.appendChild(button);
     });
-
-    // Checkbox filters
+//end filter buttons bar
+    // Start Checkbox filters
     const filterWrapper = document.createElement('div');
     filterWrapper.style.margin = '20px auto';
     filterWrapper.style.textAlign = 'center';
@@ -288,7 +310,7 @@ fetch('data/bioquest_data_full.json')
     habitatContainer.style.borderRadius = '5px';
     habitatContainer.style.backgroundColor = '#f9f9f9';
     filterWrapper.appendChild(habitatContainer);
-
+//End Checkbox filters
     // Clear Filters Button
     const clearButton = document.createElement('button');
     clearButton.textContent = 'Clear Filters';
@@ -388,7 +410,8 @@ fetch('data/bioquest_data_full.json')
     document.querySelectorAll('input[name="typeFilter"]').forEach(cb => cb.onchange = applyFilters);
     document.querySelectorAll('input[name="habitatFilter"]').forEach(cb => cb.onchange = applyFilters);
 
-    applyFilters(); // initialize match counter on load
+    applyFilters(); 
+    // initialize match counter on load
     // Geolocation logic: show user location with marker and accuracy circle
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -473,11 +496,30 @@ fetch('data/bioquest_data_full.json')
     console.error("Error loading species data:", error);
   });
 
-function scrollToType(typeId) {
-  const target = document.getElementById(`type-${typeId}`);
-  if (target) {
-    const offset = 500;
-    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-    window.scrollTo({ top, behavior: 'smooth' });
-  }
-}
+  function scrollToType(typeId) {
+    const target = document.getElementById(`type-${typeId}`);
+    if (target) {
+      const offset = 500;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  } // <== this closes the function
+  
+  // Now OUTSIDE the function:
+  alert("JS file loaded");
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM is ready");
+  
+    const mobileToggle = document.getElementById('mobileToggle');
+    console.log("Button element:", mobileToggle);
+  
+    if (mobileToggle) {
+      console.log("Mobile toggle button found");
+      mobileToggle.addEventListener('click', () => {
+        console.log("Button clicked");
+        document.body.classList.toggle('mobile-mode');
+      });
+    } else {
+      console.warn("Mobile toggle button NOT found");
+    }
+  });
