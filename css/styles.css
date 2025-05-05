@@ -1,9 +1,33 @@
 /* ============================================================
+   Species Section Headers (h2 inside species-type sections)
+   ============================================================ */
+/* Selector: h2[id^="type-"] targets species section headers */
+
+/* ============================================================
    1. Base layout and body styles
    ============================================================ */
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
+    padding:0;
+    background-color: #c2ccd3;
+}
+.header-placeholder {
+  height: 60px;
+  background-color: #c2ccd3;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+#map {
+    position: sticky;
+    top: 120px !important; /* Matches header height */
+    z-index: 10;
+    border: 2px solid #444; /* Dark grey frame */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Soft drop shadow */
+    background-color: #e0e0e0; /* fallback background for loading */
+    margin-top:0;
 }
 /* ============================================================
    2. Icon Styles needed if icons dont have a white outline
@@ -86,7 +110,7 @@ body.mobile-mode #match-counter {
    TEMPORARY TESTS
    ============================================================ */
    body.mobile-mode {
-    background: rgb(74, 112, 3) !important;
+    background: #c2ccd3 !important;
   }
   /* Default card grid */
 .species-card-container {
@@ -99,29 +123,6 @@ body.mobile-mode .species-card-container {
   grid-template-columns: repeat(2, 1fr);
   width: 95%;
   margin: 0 auto;
-}
-/*increase size of location not available message */
-.geo-warning {
-  font-size: 1.3em;
-  padding: 16px;
-  background-color: #fff3cd;
-  border: 1px solid #ffeeba;
-  color: #856404;
-  border-radius: 6px;
-  max-width: 95%;
-  margin: 10px auto;
-  position: relative;
-}
-
-.geo-warning .close-button {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  background: none;
-  border: none;
-  font-size: 1.9em;
-  color: #856404;
-  cursor: pointer;
 }
 /*Increase card font size and add padding*/
 /* Default (desktop) card styles */
@@ -233,8 +234,104 @@ body.mobile-mode .card div {
 body.mobile-mode .floating-map-btn {
   display: block;
 }
+/* =========================================
+   Header with Logo – Clean Fill
+   ========================================= */
+   .bioquest-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c2ccd3;
+    height: 120px; /* You can change this */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0;
+    margin: 0;
+    line-height: 0;
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  }
+  
+  .bioquest-header img {
+    height: 100%;
+    width: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    object-fit: contain;
+  }
+  
+  /* Adjust height slightly larger on mobile if needed */
+  @media (max-width: 768px) {
+    .bioquest-header {
+      height: 120px;
+    }
+  }
+  /*increase size of location not available message */
+
+  .geo-warning {
+    position: fixed;
+    top: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 96vw;
+    max-width: 96vw;
+    z-index: 1000;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #444;
+    border-radius: 6px;
+    padding: 20px 24px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.5;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  @media (max-width: 768px) {
+    body .geo-warning {
+      font-size: 1.6rem !important;
+      padding: 22px 26px !important;
+      width: 98% !important;
+      max-width: 98% !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+    }
+  }
+  .geo-warning .close-button {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 2rem; /* Base size: 32px */
+    font-weight: bold;
+    line-height: 1;
+    float: right;
+    cursor: pointer;
+    color: #444;
+    padding: 0 12px;
+  }
+  @media (max-width: 768px) {
+    .geo-warning .close-button {
+      font-size: 2.5rem; /* Increase size for mobile */
+      padding: 0 16px;
+    }
+  }
 /*TEMPORARY TESTING
 .floating-map-btn {
   background: hotpink;
   border: 2px solid black;
 }*/
+
+/* ============================================================
+   Mobile-specific styles for species section headers
+   ============================================================ */
+@media (max-width: 768px) {
+  h2[id^="type-"] {
+    text-align: center;
+  }
+}

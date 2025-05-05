@@ -25,7 +25,7 @@ let modalContent;
 // Start Map setup
 const map = L.map('map').setView([51.87678061471379, -9.575524117425353], 17);
 document.getElementById('map').style.position = 'sticky';
-document.getElementById('map').style.top = '50px';
+document.getElementById('map').style.top = '0px';
 document.getElementById('map').style.zIndex = '100';
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -539,6 +539,10 @@ fetch('data/bioquest_data_full.json')
   alert("JS file loaded");
   document.addEventListener('DOMContentLoaded', () => {
     console.log("DOM is ready");
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 200);
+    console.log("Map height after invalidate:", document.getElementById('map').offsetHeight);
   
     const mobileToggle = document.getElementById('mobileToggle');
     console.log("Button element:", mobileToggle);
@@ -553,3 +557,29 @@ fetch('data/bioquest_data_full.json')
       console.warn("Mobile toggle button NOT found");
     }
   });
+
+// === Map recenter and locate buttons (added at bottom for robustness) ===
+document.addEventListener('DOMContentLoaded', () => {
+  const resetBtn = document.getElementById('resetMapBtn');
+  const locateBtn = document.getElementById('locateMeBtn');
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      map.setView([51.87678061471379, -9.575524117425353], 17);
+    });
+  }
+
+  if (locateBtn && navigator.geolocation) {
+    locateBtn.addEventListener('click', () => {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const userCoords = [position.coords.latitude, position.coords.longitude];
+          map.setView(userCoords, 17);
+        },
+        error => {
+          alert("Unable to retrieve your location.");
+        }
+      );
+    });
+  }
+});
