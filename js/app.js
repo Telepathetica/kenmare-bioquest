@@ -79,9 +79,9 @@ fetch('data/bioquest_data_full.json')
       let iconSize;
       
       if (species.type === "mammal") {
-        iconSize = isMobile ? [60, 60] : [24, 24];
+        iconSize = isMobile ? [70, 70] : [24, 24];
       } else {
-        iconSize = isMobile ? [70, 70] : [30, 30];
+        iconSize = isMobile ? [80, 80] : [30, 30];
       }
 //end icon sizes
       const icon = L.divIcon({
