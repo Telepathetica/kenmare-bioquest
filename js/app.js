@@ -75,7 +75,7 @@ fetch('data/bioquest_data_full.json')
         mainContainer.appendChild(typeSection);
       }
 //icon sizes
-      let isMobile = window.innerWidth <= 768;
+      let isMobile = document.body.classList.contains('mobile-mode') || window.innerWidth <= 768;
       let iconSize;
       
       if (species.type === "mammal") {
