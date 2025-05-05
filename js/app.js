@@ -74,10 +74,16 @@ fetch('data/bioquest_data_full.json')
 
         mainContainer.appendChild(typeSection);
       }
-
-      let iconSize = [30, 30];
-      if (species.type === "mammal") iconSize = [24, 24];
-
+//icon sizes
+      let isMobile = window.innerWidth <= 768;
+      let iconSize;
+      
+      if (species.type === "mammal") {
+        iconSize = isMobile ? [35, 35] : [24, 24];
+      } else {
+        iconSize = isMobile ? [45, 45] : [30, 30];
+      }
+//end icon sizes
       const icon = L.divIcon({
         className: 'custom-marker',
         html: `

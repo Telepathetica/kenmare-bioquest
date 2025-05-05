@@ -6,7 +6,18 @@ body {
     margin: 20px;
 }
 /* ============================================================
-   2. Rare species effects (glow)
+   2. Icon Styles needed if icons dont have a white outline
+   ============================================================ */
+.custom-marker img {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 6px;
+  box-sizing: border-box;
+}
+ /*End Icon styles*/
+/* ============================================================
+   2b. Rare species effects (glow)
    ============================================================ */
 .highlight {
     outline: 3px solid #4FC3F7;
@@ -48,6 +59,24 @@ body {
     height: auto;
   }
   /*simulated mobile end*/
+ /* ============================================================
+    Enlarge map controls on mobile
+   ============================================================ */
+  /* Enlarge Leaflet zoom controls on mobile mode */
+body.mobile-mode .leaflet-control-zoom {
+  transform: scale(1.5);
+  transform-origin: top left;
+  margin: 10px 0 0 10px; /* top right bottom left */
+}
+
+/* Optional: increase touch area and font size */
+body.mobile-mode .leaflet-control-zoom a {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 22px;
+}
+
   /* ============================================================
    TEMPORARY TESTS
    ============================================================ */
